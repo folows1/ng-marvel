@@ -1,0 +1,52 @@
+.container {
+    align-items: center;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: linear-gradient(155deg, rgba(0, 0, 0, 0.5) 20%, rgba(237, 29, 36, 0.5));
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin: 25px 0;
+}
+
+.card:hover {
+    background-color: rgb(237, 29, 36);
+    transition: ease-out 0.5s all !important;
+    cursor: pointer;
+}
+
+.imageThumb {
+    border: 5px solid black;
+    border-radius: 10px;
+    flex: initial;
+}
+
+p {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding-left: 2rem;
+}
+
+.pagi::ng-deep .ngx-pagination li {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.pagi.pagi::ng-deep .ngx-pagination a {
+    color: #fff;
+}
+
+.pagi::ng-deep .ngx-pagination li>a:hover {
+    background: rgb(237, 29, 36);
+}
+
+.pagi::ng-deep .ngx-pagination .current {
+    background: rgba(237, 29, 36, 0.5) !important;
+}
