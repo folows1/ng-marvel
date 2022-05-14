@@ -7,11 +7,12 @@ import { IItem } from '../item';
 @Injectable({
   providedIn: 'root'
 })
-export class SeriesService {
-  series: IItem[] = [];
+export class CreatorsService {
+
+  creators: IItem[] = [];
 
   constructor(private http: HttpClient) {
-    this.get100Series();
+    this.get100Creators();
   }
 
   options = {
@@ -20,36 +21,35 @@ export class SeriesService {
     }
   };
 
-  getSeries(): IItem[] {
-    return this.series;
+  getCreators(): IItem[] {
+    return this.creators;
   }
 
   /**
-   * Get series from Marvel API
+   * Get creators from Marvel API
    * @returns {Observable<any>}
    * @memberof MarvelService
    * @params {number} offset - offset for pagination
    * @params {string} info - info to pass to the API
    * */
-  fetchseries(): Observable<any> {
-    const url = `${environment.API_URL}series?limit=100${environment.API_KEY}`;
-    console.log('requesting series');
+  fetchCreators(): Observable<any> {
+    const url = `${environment.API_URL}creators?limit=100${environment.API_KEY}`;
+    console.log('requesting creators');
     return this.http.get(url, this.options);
   }
 
 
   /**
-   * Get series from Marvel API
+   * Get creators from Marvel API
    * @returns {void}
    * @memberof CharactersComponent
    * */
-  get100Series() {
-    this.fetchseries().subscribe(data => {
+  get100Creators() {
+    this.fetchCreators().subscribe(data => {
       const response = (data['data']['results']) as IItem[];
-      response.forEach((serie, index) => {
-        this.series[index] = serie;
+      response.forEach((creator, index) => {
+        this.creators[index] = creator;
       });
     });
   }
-
 }

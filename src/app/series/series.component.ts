@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { IItem } from '../item';
+import { SeriesService } from './series.service';
 
 @Component({
   selector: 'app-series',
   templateUrl: './series.component.html',
-  styleUrls: ['./series.component.css']
+  styleUrls: ['../characters/characters.component.css']
 })
-export class SeriesComponent implements OnInit {
+export class SeriesComponent {
 
-  constructor() { }
+  series: IItem[] = [];
 
-  ngOnInit(): void {
+  constructor(private service: SeriesService) {
+    this.series = this.service.getSeries();
   }
 
 }

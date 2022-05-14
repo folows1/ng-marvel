@@ -14,6 +14,7 @@ import { DetailComponent } from './detail/detail.component';
 import { ComicsComponent } from './comics/comics.component';
 import { EventsComponent } from './events/events.component';
 import { SeriesComponent } from './series/series.component';
+import { CreatorsComponent } from './creators/creators.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SeriesComponent } from './series/series.component';
     DetailComponent,
     ComicsComponent,
     EventsComponent,
-    SeriesComponent
+    SeriesComponent,
+    CreatorsComponent,
   ],
   imports: [
     BrowserModule,

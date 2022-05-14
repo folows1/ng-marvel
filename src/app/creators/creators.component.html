@@ -1,0 +1,25 @@
+<h1 style="text-align: center; color: #fff; font-size: 2.5rem; font-weight: 800;">Creators 🤓</h1>
+<div class="container">
+    <ngx-skeleton-loader *ngIf="isLoading" count="100" appearance="line" animation="progress" [theme]="{
+        'background': 'linear-gradient(155deg, rgba(0, 0, 0, 0.5), rgba(237, 29, 36, 0.5))',
+         height: '130px',
+        'border-radius': '10px',
+        'margin': '25px 0'
+      }">
+    </ngx-skeleton-loader>
+    <div *ngIf="!isLoading">
+        <div *ngFor="let creator of creators; let i = index" class="characterList">
+            <a [routerLink]="['/creators/', creator.id]" class="detail">
+                <div class="card">
+                    <div style="display: flex; align-items: center;">
+                        <img *ngIf="creator.thumbnail !== undefined"
+                            [src]="creator.thumbnail | imagePipe: 'standard_medium'" alt="Photo of {{creator.name}}"
+                            class="imageThumb">
+                        <p>{{creator.fullName}}</p>
+                    </div>
+                    <p style="padding-right: 25px; padding-left: 0px;">{{i+1}}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

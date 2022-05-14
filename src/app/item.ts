@@ -5,4 +5,5 @@ export interface IItem {
     thumbnail: IThumb | undefined;
     name?: string;
     title?: string;
+    fullName?: string;
 }

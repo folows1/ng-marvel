@@ -1,26 +1,26 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { IItem } from '../item';
-import { ComicsService } from './comics.service';
+import { CreatorsService } from './creators.service';
 
 @Component({
-  selector: 'app-comics',
-  templateUrl: './comics.component.html',
+  selector: 'app-creators',
+  templateUrl: './creators.component.html',
   styleUrls: ['../characters/characters.component.css']
 })
-export class ComicsComponent implements AfterViewInit {
+export class CreatorsComponent implements AfterViewInit {
   isLoading: boolean;
-  comics: IItem[] = [];
+  creators: IItem[] = [];
 
-  constructor(private service: ComicsService) {
+  constructor(private service: CreatorsService) {
     this.isLoading = true;
-    this.comics = this.service.getComics();
+    this.creators = this.service.getCreators();
   }
 
   ngAfterViewInit() {
     setTimeout(() => {
       console.log('loaded');
       this.isLoading = false;
-    }, 1500);
+    }, 1000);
   }
 
 }
