@@ -4,6 +4,9 @@
     margin: 0 auto;
 }
 
+.detail {
+    text-decoration: none;
+}
 .card {
     display: flex;
     align-items: center;

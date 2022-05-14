@@ -1,0 +1,16 @@
+<h1 style="text-align: center; color: #fff; font-size: 2.5rem; font-weight: 800;">Events 📅</h1>
+<div class="container">
+
+    <div *ngFor="let event of events; let i = index" class="characterList">
+        <a [routerLink]="['/events/', event.id]" class="detail">
+            <div class="card">
+                <div style="display: flex; align-items: center;">
+                    <img *ngIf="event.thumbnail !== undefined" [src]="event.thumbnail | imagePipe: 'standard_medium'"
+                        alt="Photo of {{event.name}}" class="imageThumb">
+                    <p>{{event.title}}</p>
+                </div>
+                <p style="padding-right: 25px; padding-left: 0px;">{{i+1}}</p>
+            </div>
+        </a>
+    </div>
+</div>

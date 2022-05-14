@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IThumb } from './characters/character';
+import { IThumb } from './thumb';
 
 @Pipe({
   name: 'imagePipe'

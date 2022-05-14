@@ -1,24 +1,28 @@
-<h1 style="text-align: center; color: #fff; font-size: 2.5rem; font-weight: 800;">Characters</h1>
+<h1 style="text-align: center; color: #fff; font-size: 2.5rem; font-weight: 800;">Characters 🦸</h1>
 <div class="container">
-    <div *ngFor="let character of characters | paginate: {itemsPerPage: 100, currentPage: p}; let i = index"
-        class="characterList">
-        <div class="card">
-            <div style="display: flex; align-items: center;">
-                <img *ngIf="character.thumbnail !== undefined"
-                    [src]="character.thumbnail | imagePipe: 'standard_medium'" alt="Photo of {{character.name}}"
-                    class="imageThumb">
-                <p>{{character.name}}</p>
-            </div>
-            <p style="padding-right: 25px; padding-left: 0px;">{{i+1}}</p>
-        </div>
-    </div>
     <ngx-skeleton-loader *ngIf="isLoading" count="100" appearance="line" animation="progress" [theme]="{
-     'background': 'linear-gradient(155deg, rgba(0, 0, 0, 0.5), rgba(237, 29, 36, 0.5))',
-      height: '130px',
-     'border-radius': '10px',
-     'margin': '25px 0'
-   }">
+                                                'background': 'linear-gradient(155deg, rgba(0, 0, 0, 0.5), rgba(237, 29, 36, 0.5))',
+                                                 height: '130px',
+                                                'border-radius': '10px',
+                                                'margin': '25px 0'
+                                              }">
     </ngx-skeleton-loader>
+    <div *ngIf="!isLoading">
+        <div *ngFor="let character of characters | paginate: {itemsPerPage: 100, currentPage: p}; let i = index"
+            class="characterList">
+            <a [routerLink]="['/characters/', character.id]" class="detail">
+                <div class="card">
+                    <div style="display: flex; align-items: center;">
+                        <img *ngIf="character.thumbnail !== undefined" [src]="character.thumbnail | imagePipe: 'standard_medium'"
+                            alt="Photo of {{character.name}}" class="imageThumb">
+                        <p>{{character.name}}</p>
+                        </div>
+                        <p style="padding-right: 25px; padding-left: 0px;">{{i+1}}</p>
+                        </div>
+            </a>
+            </div>
+    </div>
+
     <div style="text-align: center;">
         <pagination-controls (pageChange)="p = $event" class="pagi">
         </pagination-controls>

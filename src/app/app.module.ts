@@ -9,6 +9,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { DetailComponent } from './detail/detail.component';
+import { ComicsComponent } from './comics/comics.component';
+import { EventsComponent } from './events/events.component';
+import { SeriesComponent } from './series/series.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { AppRoutingModule } from './app-routing.module';
     CharactersComponent,
     ImagePipePipe,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    NotfoundComponent,
+    DetailComponent,
+    ComicsComponent,
+    EventsComponent,
+    SeriesComponent
   ],
   imports: [
     BrowserModule,

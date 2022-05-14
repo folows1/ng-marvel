@@ -1,0 +1,16 @@
+<h1 style="text-align: center; color: #fff; font-size: 2.5rem; font-weight: 800;">Comics 📖</h1>
+<div class="container">
+
+    <div *ngFor="let comic of comics; let i = index" class="characterList">
+        <a [routerLink]="['/comics/', comic.id]" class="detail">
+            <div class="card">
+                <div style="display: flex; align-items: center;">
+                    <img *ngIf="comic.thumbnail !== undefined" [src]="comic.thumbnail | imagePipe: 'standard_medium'"
+                        alt="Photo of {{comic.name}}" class="imageThumb">
+                    <p style="font-size: 1.0rem;">{{comic.title}}</p>
+                </div>
+                <p style="padding-right: 25px; padding-left: 0px;">{{i+1}}</p>
+            </div>
+        </a>
+    </div>
+</div>
