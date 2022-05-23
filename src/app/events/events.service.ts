@@ -34,7 +34,7 @@ export class EventsService {
    * */
   fetchEvents(): Observable<any> {
     const url = `${environment.API_URL}events?limit=100${environment.API_KEY}`;
-    console.log('requesting comics');
+    console.log('requesting events');
     return this.http.get(url, this.options);
   }
 

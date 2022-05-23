@@ -15,6 +15,7 @@ import { ComicsComponent } from './comics/comics.component';
 import { EventsComponent } from './events/events.component';
 import { SeriesComponent } from './series/series.component';
 import { CreatorsComponent } from './creators/creators.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CreatorsComponent } from './creators/creators.component';
     EventsComponent,
     SeriesComponent,
     CreatorsComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

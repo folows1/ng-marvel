@@ -1,12 +1,6 @@
 <h1 style="text-align: center; color: #fff; font-size: 2.5rem; font-weight: 800;">Characters 🦸</h1>
 <div class="container">
-    <ngx-skeleton-loader *ngIf="isLoading" count="100" appearance="line" animation="progress" [theme]="{
-                                                'background': 'linear-gradient(155deg, rgba(0, 0, 0, 0.5), rgba(237, 29, 36, 0.5))',
-                                                 height: '130px',
-                                                'border-radius': '10px',
-                                                'margin': '25px 0'
-                                              }">
-    </ngx-skeleton-loader>
+    <app-loading *ngIf="isLoading"></app-loading>
     <div *ngIf="!isLoading">
         <div *ngFor="let character of characters | paginate: {itemsPerPage: 100, currentPage: p}; let i = index"
             class="characterList">

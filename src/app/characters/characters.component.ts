@@ -21,6 +21,6 @@ export class CharactersComponent implements AfterViewInit {
     setTimeout(() => {
       console.log('loaded');
       this.isLoading = false;
-    }, 2500);
+    }, 3000);
   }
 }

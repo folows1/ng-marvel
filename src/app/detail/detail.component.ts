@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IDetail } from './detail';
 import { DetailService } from './detail.service';
 
@@ -20,8 +20,13 @@ export class DetailComponent implements OnInit {
       console.log(id);
       console.log(this.route);
       this.type = this.route.snapshot.url[0].path;
-      this.service.passParams(id, this.type);
-      this.detail = this.service.getDetailObjetct();
+      console.log(this.type);
+      this.service.fetch(id, this.type).subscribe(data => {
+        this.detail = data.data.results[0] as IDetail;
+        if (this.detail.description === '') {
+          this.detail.description = 'No description available';
+        }
+      });
     })
   }
 }

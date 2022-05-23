@@ -1,6 +1,7 @@
 <h1 style="text-align: center; color: #fff; font-size: 2.5rem; font-weight: 800;">Comics 📖</h1>
 <div class="container">
-
+    <app-loading *ngIf="isLoading"></app-loading>
+    <div *ngIf="!isLoading">
     <div *ngFor="let comic of comics; let i = index" class="characterList">
         <a [routerLink]="['/comics/', comic.id]" class="detail">
             <div class="card">
@@ -13,4 +14,5 @@
             </div>
         </a>
     </div>
+</div>
 </div>

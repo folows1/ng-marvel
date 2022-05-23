@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { IItem } from '../item';
 import { SeriesService } from './series.service';
 
@@ -7,12 +7,20 @@ import { SeriesService } from './series.service';
   templateUrl: './series.component.html',
   styleUrls: ['../characters/characters.component.css']
 })
-export class SeriesComponent {
-
+export class SeriesComponent implements AfterViewInit {
+  isLoading: boolean;
   series: IItem[] = [];
 
   constructor(private service: SeriesService) {
+    this.isLoading = true;
     this.series = this.service.getSeries();
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      console.log('loaded');
+      this.isLoading = false;
+    }, 1000);
   }
 
 }

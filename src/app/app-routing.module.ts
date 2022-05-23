@@ -36,6 +36,22 @@ const routes: Routes = [
         component: DetailComponent,
     },
     {
+        path: 'comics/:id',
+        component: DetailComponent,
+    },
+    {
+        path: 'events/:id',
+        component: DetailComponent,
+    },
+    {
+        path: 'series/:id',
+        component: DetailComponent,
+    },
+    {
+        path: 'creators/:id',
+        component: DetailComponent,
+    },
+    {
         path: '',
         component: HomeComponent
     },
