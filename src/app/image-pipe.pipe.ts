@@ -12,8 +12,11 @@ export class ImagePipePipe implements PipeTransform {
    * @returns {string}
    * @memberof ImagePipePipe
    * */
-  transform(value: IThumb, imgType: string): string {
+  transform(value: IThumb | undefined, imgType: string): string {
+    if (value) {
     return `${value.path}/${imgType}.${value.extension}`;
+    }
+    return '';
   }
 
 }

@@ -6,7 +6,7 @@
             <a [routerLink]="['/creators/', creator.id]" class="detail">
                 <div class="card">
                     <div style="display: flex; align-items: center;">
-                        <img *ngIf="creator.thumbnail !== undefined"
+                        <img
                             [src]="creator.thumbnail | imagePipe: 'standard_medium'" alt="Photo of {{creator.name}}"
                             class="imageThumb">
                         <p>{{creator.fullName}}</p>

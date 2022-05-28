@@ -6,7 +6,7 @@
             <a [routerLink]="['/series/', serie.id]" class="detail">
                 <div class="card">
                     <div style="display: flex; align-items: center;">
-                        <img *ngIf="serie.thumbnail !== undefined" [src]="serie.thumbnail | imagePipe: 'standard_medium'"
+                        <img [src]="serie.thumbnail | imagePipe: 'standard_medium'"
                             alt="Photo of {{serie.name}}" class="imageThumb">
                         <p style="font-size: 1.15rem">{{serie.title}}</p>
                         </div>

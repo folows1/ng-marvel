@@ -16,6 +16,7 @@ import { EventsComponent } from './events/events.component';
 import { SeriesComponent } from './series/series.component';
 import { CreatorsComponent } from './creators/creators.component';
 import { LoadingComponent } from './loading/loading.component';
+import { EndyearPipe } from './endyear.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LoadingComponent } from './loading/loading.component';
     SeriesComponent,
     CreatorsComponent,
     LoadingComponent,
+    EndyearPipe,
   ],
   imports: [
     BrowserModule,

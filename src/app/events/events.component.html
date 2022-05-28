@@ -6,7 +6,7 @@
             <a [routerLink]="['/events/', event.id]" class="detail">
                 <div class="card">
                     <div style="display: flex; align-items: center;">
-                        <img *ngIf="event.thumbnail !== undefined" [src]="event.thumbnail | imagePipe: 'standard_medium'"
+                        <img [src]="event.thumbnail | imagePipe: 'standard_medium'"
                             alt="Photo of {{event.name}}" class="imageThumb">
                         <p>{{event.title}}</p>
                     </div>

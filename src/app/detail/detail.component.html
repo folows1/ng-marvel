@@ -1,1 +1,59 @@
-<p>detail works!</p>
+<div class="container">
+    <div class="h">
+        <div class="img">
+            <img [src]="detail.thumbnail | imagePipe: 'portrait_xlarge'"
+                alt="Photo of {{detail.name || detail.fullName || detail.title}}" style="border-radius: 10px;" />
+        </div>
+        <div class="title">
+            {{detail.name || detail.fullName || detail.title}}
+        </div>
+    </div>
+    <div class="content">
+        <div class="description">
+            <b> Description </b> <br />
+            {{detail.description}}
+        </div>
+        <div *ngIf="detail.startYear" class="contents">
+            <b>Start Year: {{ detail.startYear }} </b>
+        </div>
+        <div *ngIf="detail.endYear" class="contents">
+            <b>End Year: {{ detail.endYear | endyear }} </b>
+        </div>
+        <div *ngIf="type !== 'comics' && detail.comics?.available !== 0 && detail.comics" class="contents">
+            <b> Comics </b> <br />
+            <div *ngFor="let item of detail.comics?.items; let i = index">
+                {{ item.name || item.fullName || item.title }}
+            </div>
+        </div>
+        <div *ngIf="type !== 'characters' && detail.characters?.available !== 0 && detail.characters" class="contents">
+            <b> Characters </b> <br />
+            <div *ngFor="let item of detail.characters?.items; let i = index">
+                {{ item.name || item.fullName || item.title }}
+            </div>
+        </div>
+        <div *ngIf="type !== 'series' && type !== 'comics' && detail.series?.available !== 0 && detail.series"
+            class="contents">
+            <b> Series </b> <br />
+            <div *ngFor="let item of detail.series?.items; let i = index">
+                {{ item.name || item.fullName || item.title }}
+            </div>
+        </div>
+        <div *ngIf="type !== 'events' && detail.events?.available !== 0 && detail.events" class="contents">
+            <b> Events </b> <br />
+            <div *ngFor="let item of detail.events?.items; let i = index">
+                {{ item.name || item.fullName || item.title }}
+            </div>
+        </div>
+        <div *ngIf="type !== 'creators' && detail.creators?.available !== 0 && detail.creators" class="contents">
+            <b> Creators </b> <br />
+            <div *ngFor="let item of detail.creators?.items; let i = index">
+                {{ item.name || item.fullName || item.title }}
+            </div>
+        </div>
+        <div *ngIf="type !== 'stories' && detail.stories?.available !== 0 && detail.stories" class="contents">
+            <b> Stories </b> <br />
+            <div *ngFor="let item of detail.stories?.items; let i = index">
+                {{ item.name || item.fullName || item.title }}
+            </div>
+        </div>
+    </div>

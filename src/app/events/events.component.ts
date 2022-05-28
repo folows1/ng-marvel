@@ -20,7 +20,7 @@ export class EventsComponent implements AfterViewInit {
     setTimeout(() => {
       console.log('loaded');
       this.isLoading = false;
-    }, 1000);
+    }, 1500);
   }
 
 }
