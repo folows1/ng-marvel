@@ -1,9 +1,6 @@
 
-const url = process.env["API_URL"];
-const key = process.env["API_KEY"];
-
 export const environment = {
   production: false,
-  API_URL: url,
-  API_KEY: key,
+  API_URL: process.env.API_URL,
+  API_KEY: process.env.API_KEY,
 };
