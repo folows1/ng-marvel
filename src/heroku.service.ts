@@ -10,8 +10,8 @@ export class HerokuService {
 
     constructor(private http: HttpClient) { }
 
-    fetch(): Observable<string> {
-        return this.http.get<string>(`https://ng-marvel.herokuapp.com/xpto`);
+    fetch(): Observable<any> {
+        return this.http.get<any>(`https://ng-marvel.herokuapp.com/xpto`);
     }
 
 }
