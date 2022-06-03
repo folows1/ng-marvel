@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'env';
 import { Observable } from 'rxjs';
 import { IItem } from '../item';
+import { HerokuService } from 'src/heroku.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { IItem } from '../item';
 export class CharacterService {
   characters: IItem[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private heroku: HerokuService) {
     this.getAllCharacters();
   }
 
@@ -32,7 +34,7 @@ export class CharacterService {
    * @params {string} info - info to pass to the API
    * */
   fetchCharacters(offset: number): Observable<any> {
-    const url = `${environment.API_URL}characters?limit=100&offset=${offset}${environment.API_KEY}`;
+    const url = `${environment.API_URL}characters?limit=100&offset=${offset}${this.heroku.getAPIKEY()}`;
     console.log('requesting characters');
     return this.http.get(url, this.options);
   }

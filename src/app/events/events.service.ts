@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'env';
 import { IItem } from '../item';
+import { HerokuService } from 'src/heroku.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class EventsService {
 
   events: IItem[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private heroku: HerokuService) {
     this.get100Events();
   }
 
@@ -33,7 +35,7 @@ export class EventsService {
    * @params {string} info - info to pass to the API
    * */
   fetchEvents(): Observable<any> {
-    const url = `${environment.API_URL}events?limit=100${environment.API_KEY}`;
+    const url = `${environment.API_URL}events?limit=100${this.heroku.getAPIKEY()}`;
     console.log('requesting events');
     return this.http.get(url, this.options);
   }

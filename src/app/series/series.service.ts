@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'env';
 import { IItem } from '../item';
+import { HerokuService } from 'src/heroku.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { IItem } from '../item';
 export class SeriesService {
   series: IItem[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private heroku: HerokuService) {
     this.get100Series();
   }
 
@@ -32,7 +34,7 @@ export class SeriesService {
    * @params {string} info - info to pass to the API
    * */
   fetchseries(): Observable<any> {
-    const url = `${environment.API_URL}series?limit=100${environment.API_KEY}`;
+    const url = `${environment.API_URL}series?limit=100${this.heroku.getAPIKEY()}`;
     console.log('requesting series');
     return this.http.get(url, this.options);
   }

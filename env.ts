@@ -1,7 +1,5 @@
-declare var API_KEY: any;
-declare var API_URL: any;
+
 
 export const environment = {
-    API_URL,
-    API_KEY
+    API_URL: 'https://gateway.marvel.com/v1/public/',
 };

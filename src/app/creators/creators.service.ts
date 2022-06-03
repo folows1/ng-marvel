@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'env';
 import { IItem } from '../item';
+import { HerokuService } from 'src/heroku.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class CreatorsService {
 
   creators: IItem[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private heroku: HerokuService) {
     this.get100Creators();
   }
 
@@ -33,7 +35,7 @@ export class CreatorsService {
    * @params {string} info - info to pass to the API
    * */
   fetchCreators(): Observable<any> {
-    const url = `${environment.API_URL}creators?limit=100${environment.API_KEY}`;
+    const url = `${environment.API_URL}creators?limit=100${this.heroku.getAPIKEY()}`;
     console.log('requesting creators');
     return this.http.get(url, this.options);
   }
