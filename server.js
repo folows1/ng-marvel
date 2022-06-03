@@ -12,7 +12,7 @@ const API_URL = process.env.API_URL;
 app.use(express.static(__dirname + '/dist/ng-marvel'));
 
 app.get('/xpto', (req, res) => {
-    res.response(API_KEY);
+    res.send(API_KEY);
 });
 
 
