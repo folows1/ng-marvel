@@ -10,10 +10,14 @@ import { HerokuService } from 'src/heroku.service';
 })
 export class ComicsService {
   comics: IItem[] = [];
+  API_KEY = ''
 
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
-    this.get100Comics();
+    this.heroku.fetch().subscribe(data => {
+      this.API_KEY = data;
+      this.get100Comics();
+    })
   }
 
   options = {
@@ -34,7 +38,7 @@ export class ComicsService {
    * @params {string} info - info to pass to the API
    * */
   fetchComics(): Observable<any> {
-    const url = `${environment.API_URL}comics?limit=100${this.heroku.getAPIKEY()}`;
+    const url = `${environment.API_URL}comics?limit=100${this.API_KEY}`;
     console.log('requesting comics');
     return this.http.get(url, this.options);
   }

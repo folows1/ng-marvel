@@ -11,10 +11,14 @@ import { HerokuService } from 'src/heroku.service';
 export class EventsService {
 
   events: IItem[] = [];
+  API_KEY = ''
 
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
-    this.get100Events();
+    this.heroku.fetch().subscribe(data => {
+      this.API_KEY = data;
+      this.get100Events();
+    })
   }
 
   options = {
@@ -35,7 +39,7 @@ export class EventsService {
    * @params {string} info - info to pass to the API
    * */
   fetchEvents(): Observable<any> {
-    const url = `${environment.API_URL}events?limit=100${this.heroku.getAPIKEY()}`;
+    const url = `${environment.API_URL}events?limit=100${this.API_KEY}`;
     console.log('requesting events');
     return this.http.get(url, this.options);
   }

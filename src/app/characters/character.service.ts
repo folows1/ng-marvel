@@ -10,10 +10,14 @@ import { HerokuService } from 'src/heroku.service';
 })
 export class CharacterService {
   characters: IItem[] = [];
+  API_KEY = '';
 
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
-    this.getAllCharacters();
+    this.heroku.fetch().subscribe(data => {
+      this.API_KEY = data;
+      this.getAllCharacters();
+    })
   }
 
   options = {
@@ -34,7 +38,7 @@ export class CharacterService {
    * @params {string} info - info to pass to the API
    * */
   fetchCharacters(offset: number): Observable<any> {
-    const url = `${environment.API_URL}characters?limit=100&offset=${offset}${this.heroku.getAPIKEY()}`;
+    const url = `${environment.API_URL}characters?limit=100&offset=${offset}${this.API_KEY}`;
     console.log('requesting characters');
     return this.http.get(url, this.options);
   }

@@ -10,10 +10,14 @@ import { HerokuService } from 'src/heroku.service';
 })
 export class SeriesService {
   series: IItem[] = [];
+  API_KEY = '';
 
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
-    this.get100Series();
+    this.heroku.fetch().subscribe(data => {
+      this.API_KEY = data;
+      this.get100Series();
+    })
   }
 
   options = {
@@ -34,7 +38,7 @@ export class SeriesService {
    * @params {string} info - info to pass to the API
    * */
   fetchseries(): Observable<any> {
-    const url = `${environment.API_URL}series?limit=100${this.heroku.getAPIKEY()}`;
+    const url = `${environment.API_URL}series?limit=100${this.API_KEY}`;
     console.log('requesting series');
     return this.http.get(url, this.options);
   }

@@ -11,10 +11,14 @@ import { HerokuService } from 'src/heroku.service';
 export class CreatorsService {
 
   creators: IItem[] = [];
+  API_KEY = '';
 
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
-    this.get100Creators();
+    this.heroku.fetch().subscribe(data => {
+      this.API_KEY = data;
+      this.get100Creators();
+    })
   }
 
   options = {
@@ -35,7 +39,7 @@ export class CreatorsService {
    * @params {string} info - info to pass to the API
    * */
   fetchCreators(): Observable<any> {
-    const url = `${environment.API_URL}creators?limit=100${this.heroku.getAPIKEY()}`;
+    const url = `${environment.API_URL}creators?limit=100${this.API_KEY}`;
     console.log('requesting creators');
     return this.http.get(url, this.options);
   }

@@ -8,24 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class HerokuService {
 
-    API_KEY: any;
-
-    constructor(private http: HttpClient) {
-        this.fetch().subscribe(
-            data => {
-                this.API_KEY = data
-            }
-        )
-    }
+    constructor(private http: HttpClient) { }
 
     fetch(): Observable<string> {
         return this.http.get<string>(`https://ng-marvel.herokuapp.com/xpto`);
     }
-
-    getAPIKEY(): any {
-        return this.API_KEY;
-    }
-
 
 }
 
