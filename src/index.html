@@ -6,6 +6,11 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="./assets/hero.ico">
+  <script>
+    const API_URL = process.env.API_URL;
+    const API_KEY = process.env.API_KEY;
+    console.log('index' + API_KEY);
+  </script>
 </head>
 <body>
   <app-root></app-root>
