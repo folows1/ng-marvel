@@ -15,13 +15,9 @@ export class SeriesService {
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
     this.heroku.fetch().subscribe(data => {
-      /* this.API_KEY = data; */
-      /* this.get100Series(); */
-    },
-      error => {
-        this.API_KEY = error.text;
-        this.get100Series();
-      })
+      this.API_KEY = data;
+      this.get100Series();
+    })
   }
 
   options = {

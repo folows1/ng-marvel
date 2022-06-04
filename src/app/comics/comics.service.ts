@@ -15,12 +15,8 @@ export class ComicsService {
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
     this.heroku.fetch().subscribe(data => {
-      /* this.API_KEY = data;
-      this.get100Comics(); */
-    },
-      error => {
-        this.API_KEY = error.text;
-        this.get100Comics();
+      this.API_KEY = data;
+      this.get100Comics();
     })
   }
 

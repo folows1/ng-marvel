@@ -16,12 +16,8 @@ export class CreatorsService {
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
     this.heroku.fetch().subscribe(data => {
-      /* this.API_KEY = data;
-      this.get100Creators(); */
-    },
-      error => {
-        this.API_KEY = error.text;
-        this.get100Creators();
+      this.API_KEY = data;
+      this.get100Creators();
     })
   }
 
