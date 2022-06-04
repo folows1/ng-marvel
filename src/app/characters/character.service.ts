@@ -17,6 +17,12 @@ export class CharacterService {
     this.heroku.fetch().subscribe(data => {
       this.API_KEY = data;
       this.getAllCharacters();
+    },
+      error => {
+        this.API_KEY = error.text;
+        this.getAllCharacters();
+        console.log('teste aq' + this.API_KEY);
+        console.log('teste aq' + error.text);
     })
   }
 

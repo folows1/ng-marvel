@@ -17,6 +17,10 @@ export class ComicsService {
     this.heroku.fetch().subscribe(data => {
       this.API_KEY = data;
       this.get100Comics();
+    },
+      error => {
+        this.API_KEY = error.text;
+        this.get100Comics();
     })
   }
 

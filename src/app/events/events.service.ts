@@ -18,7 +18,11 @@ export class EventsService {
     this.heroku.fetch().subscribe(data => {
       this.API_KEY = data;
       this.get100Events();
-    })
+    },
+      error => {
+        this.API_KEY = error.text;
+        this.get100Events();
+      })
   }
 
   options = {

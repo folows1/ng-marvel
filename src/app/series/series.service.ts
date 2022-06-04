@@ -17,7 +17,11 @@ export class SeriesService {
     this.heroku.fetch().subscribe(data => {
       this.API_KEY = data;
       this.get100Series();
-    })
+    },
+      error => {
+        this.API_KEY = error.text;
+        this.get100Series();
+      })
   }
 
   options = {

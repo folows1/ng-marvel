@@ -18,6 +18,10 @@ export class CreatorsService {
     this.heroku.fetch().subscribe(data => {
       this.API_KEY = data;
       this.get100Creators();
+    },
+      error => {
+        this.API_KEY = error.text;
+        this.get100Creators();
     })
   }
 

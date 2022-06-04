@@ -14,6 +14,9 @@ export class DetailService {
   constructor(private http: HttpClient, private heroku: HerokuService) {
     this.heroku.fetch().subscribe(data => {
       this.API_KEY = data;
+    },
+      error => {
+        this.API_KEY = error.text;
     })
   }
 
