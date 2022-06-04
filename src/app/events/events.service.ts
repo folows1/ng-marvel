@@ -16,11 +16,11 @@ export class EventsService {
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
     this.heroku.fetch().subscribe(data => {
-      this.API_KEY = data;
-      this.get100Events();
+      /* this.API_KEY = data;
+      this.get100Events(); */
     },
       error => {
-        /* this.API_KEY = error.text; */
+        this.API_KEY = error.text;
         this.get100Events();
       })
   }

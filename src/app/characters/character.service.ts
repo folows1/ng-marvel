@@ -15,11 +15,11 @@ export class CharacterService {
   constructor(private http: HttpClient,
     private heroku: HerokuService) {
     this.heroku.fetch().subscribe(data => {
-      this.API_KEY = data;
-      this.getAllCharacters();
+      /* this.API_KEY = data;
+      this.getAllCharacters(); */
     },
       error => {
-        /* this.API_KEY = error.text; */
+        this.API_KEY = error.text;
         this.getAllCharacters();
         console.log('teste aq' + this.API_KEY);
         console.log('teste aq' + error.text);
