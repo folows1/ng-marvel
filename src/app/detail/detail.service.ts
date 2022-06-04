@@ -16,7 +16,7 @@ export class DetailService {
       this.API_KEY = data;
     },
       error => {
-        this.API_KEY = error.text;
+        /* this.API_KEY = error.text; */
     })
   }
 

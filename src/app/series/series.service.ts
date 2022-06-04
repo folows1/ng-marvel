@@ -19,7 +19,7 @@ export class SeriesService {
       this.get100Series();
     },
       error => {
-        this.API_KEY = error.text;
+        /* this.API_KEY = error.text; */
         this.get100Series();
       })
   }

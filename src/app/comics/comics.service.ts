@@ -19,7 +19,7 @@ export class ComicsService {
       this.get100Comics();
     },
       error => {
-        this.API_KEY = error.text;
+        /* this.API_KEY = error.text; */
         this.get100Comics();
     })
   }

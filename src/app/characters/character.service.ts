@@ -19,7 +19,7 @@ export class CharacterService {
       this.getAllCharacters();
     },
       error => {
-        this.API_KEY = error.text;
+        /* this.API_KEY = error.text; */
         this.getAllCharacters();
         console.log('teste aq' + this.API_KEY);
         console.log('teste aq' + error.text);

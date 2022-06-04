@@ -20,7 +20,7 @@ export class CreatorsService {
       this.get100Creators();
     },
       error => {
-        this.API_KEY = error.text;
+        /* this.API_KEY = error.text; */
         this.get100Creators();
     })
   }

@@ -20,7 +20,7 @@ export class EventsService {
       this.get100Events();
     },
       error => {
-        this.API_KEY = error.text;
+        /* this.API_KEY = error.text; */
         this.get100Events();
       })
   }
