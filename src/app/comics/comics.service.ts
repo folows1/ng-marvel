@@ -3,21 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'env';
 import { IItem } from '../item';
-import { HerokuService } from 'src/heroku.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComicsService {
   comics: IItem[] = [];
-  API_KEY = ''
 
-  constructor(private http: HttpClient,
-    private heroku: HerokuService) {
-    this.heroku.fetch().subscribe(data => {
-      this.API_KEY = data;
-      this.get100Comics();
-    })
+
+  constructor(private http: HttpClient) {
+    this.get100Comics();
   }
 
   options = {
@@ -38,7 +33,7 @@ export class ComicsService {
    * @params {string} info - info to pass to the API
    * */
   fetchComics(): Observable<any> {
-    const url = `${environment.API_URL}comics?limit=100${this.API_KEY}`;
+    const url = `${environment.API_URL}comics?limit=100${environment.API_KEY}`;
     console.log('requesting comics');
     return this.http.get(url, this.options);
   }

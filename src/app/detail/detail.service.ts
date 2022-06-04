@@ -2,23 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'env';
 import { Observable } from 'rxjs';
-import { HerokuService } from 'src/heroku.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DetailService {
 
-  API_KEY = '';
-
-  constructor(private http: HttpClient, private heroku: HerokuService) {
-    this.heroku.fetch().subscribe(data => {
-      this.API_KEY = data;
-    })
-  }
+  constructor(private http: HttpClient) { }
 
   fetch(id: number, type: string): Observable<any> {
-    return this.http.get(`${environment.API_URL}${type}/${id}?${this.API_KEY}`);
+    return this.http.get(`${environment.API_URL}${type}/${id}?${environment.API_KEY}`);
   }
 }
 
